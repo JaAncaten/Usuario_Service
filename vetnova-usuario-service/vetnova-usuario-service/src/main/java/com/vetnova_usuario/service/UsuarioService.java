@@ -24,7 +24,20 @@ public class UsuarioService {
     }
 
     public Usuario guardarUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+
+        if (usuarioRepository.existsByCorreo(usuario.getCorreo())){
+            return null;
+        }
+
+        if (usuarioRepository.existsByRut(usuario.getRut())){
+            return null;
+        }
+
+        if (usuarioRepository.existsByTelefono(usuario.getTelefono())){
+            return null;
+        }
+
+        return usuarioRepository.save(usuario); 
     }
 
     public Usuario actualizarUsuario(Long id, Usuario usuarioActualizado) {

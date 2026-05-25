@@ -27,8 +27,16 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario guardarUsuario(@RequestBody Usuario usuario) {
-        return usuarioService.guardarUsuario(usuario);
+    public Object guardarUsuario(@RequestBody Usuario usuario) {
+
+            Usuario usuarioGuardado =usuarioService.guardarUsuario(usuario);
+
+            if (usuarioGuardado == null){
+
+                return "no se pudo registrar el usuario. Correo , rut o telefono ya existenetes ";
+            }
+
+        return usuarioGuardado;
     }
 
     @PutMapping("/{id}")
