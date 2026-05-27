@@ -15,6 +15,12 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+        public Usuario crearPerfilBasico(Usuario usuario) {
+        usuario.setEstado("ACTIVO");
+        return usuarioRepository.save(usuario);
+    }
+    
+
     public List<Usuario> obtenerUsuarios() {
         return usuarioRepository.findAll();
     }

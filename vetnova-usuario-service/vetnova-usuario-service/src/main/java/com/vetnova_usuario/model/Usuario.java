@@ -30,5 +30,6 @@ public class Usuario {
     private String telefono;
     private String direccion;
     private String rol;
+    private String estado;
 
 }

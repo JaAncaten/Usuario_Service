@@ -13,6 +13,11 @@ import com.vetnova_usuario.service.UsuarioService;
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
 
+    @PostMapping("/perfil-basico")
+    public Usuario crearPerfilBasico(@RequestBody Usuario usuario) {
+    return usuarioService.crearPerfilBasico(usuario);
+}
+
     @Autowired
     private UsuarioService usuarioService;
 
@@ -54,4 +59,6 @@ public class UsuarioController {
 
         return "Usuario no encontrado";
     }
+
+    
 }

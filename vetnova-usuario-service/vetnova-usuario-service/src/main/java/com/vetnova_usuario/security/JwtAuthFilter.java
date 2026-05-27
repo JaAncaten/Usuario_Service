@@ -15,6 +15,14 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+    String metodo = request.getMethod();
+    String uri = request.getRequestURI();
+
+    return metodo.equals("POST") && uri.equals("/api/usuarios/perfil-basico");
+}
+
     @Autowired
     private JwtService jwtService;
 
